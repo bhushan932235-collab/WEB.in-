@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Follow Us | Fire & Safety MCQ</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: sans-serif;
+    }
+
+    body {
+      background: #121212;
+      color: white;
+    }
+
+    /* HEADER */
+    .header {
+      padding: 15px;
+      text-align: center;
+    }
+
+    .logo-area {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .logo {
+      width: 60px;
+      fill: cyan;
+    }
+
+    .nav-title {
+      font-size: 36px;
+      color: cyan;
+      font-weight: bold;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 15px;
+    }
+
+    .navbar a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .menu-icon {
+      font-size: 30px;
+      cursor: pointer;
+    }
+
+    #menu-toggle {
+      display: none;
+    }
+
+    .side-menu {
+      position: fixed;
+      top: 0;
+      left: -260px;
+      width: 250px;
+      height: 100vh;
+      background: #1a1a1a;
+      padding-top: 80px;
+      transition: 0.3s;
+    }
+
+    .side-menu h2 {
+      padding: 15px 20px;
+    }
+
+    .side-menu a {
+      display: block;
+      padding: 15px 20px;
+      color: white;
+      text-decoration: none;
+    }
+
+    #menu-toggle:checked~.side-menu {
+      left: 0;
+    }
+
+    /* MAIN */
+    main {
+      padding: 25px 15px;
+    }
+
+    /* HERO */
+    .follow-hero {
+      background: linear-gradient(135deg, #ff1744, #d50000);
+      padding: 35px 20px;
+      border-radius: 14px;
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .follow-hero h1 {
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+
+    .follow-hero p {
+      font-size: 14px;
+    }
+
+    /* FOLLOW GRID */
+    .follow-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .follow-card {
+      background: #1e1e1e;
+      padding: 25px;
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .follow-card span {
+      font-size: 30px;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .follow-card a {
+      color: cyan;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    /* FOOTER */
+    .footer {
+      background: #262626;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      padding: 30px;
+      gap: 20px;
+    }
+
+    .footer a {
+      display: block;
+      color: white;
+      text-decoration: none;
+      margin-bottom: 5px;
+    }
+
+    /* RESPONSIVE */
+    @media(max-width:768px) {
+      .footer {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .follow-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="logo-area">
+      <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+        <path d="M236-345 100-480l440-440h271L236-345ZM540-40 303-277l237-237h271L574-277 811-40H540Z" />
+      </svg>
+      <div class="nav-title">Web.in</div>
+    </div>
+  </header>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <a href="home.index.html">home</a>
+    <a href="abaut.index.html">about</a>
+    <a href="follow.index.html">follow as</a>
+
+    <input type="checkbox" id="menu-toggle">
+    <label for="menu-toggle" class="menu-icon">☰</label>
+
+    <div class="side-menu">
+      <h2>FR </h2>
+      <a href="home.index.html">sem 1</a>
+      <a href="sem2.index.html">sem 2</a>
+      <a href="sem3.index.html">sem 3</a>
+      <a href="sem4.index.html">sem 4</a>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main>
+
+    <section class="follow-hero">
+      <h1>Follow Us</h1>
+      <p>Stay Connected • Stay Updated</p>
+    </section>
+
+    <section class="follow-grid">
+      <div class="follow-card">
+        <span></span>
+        <h3>Instagram</h3>
+        <a href="https://www.instagram.com/bhushan_patil_07__?igsh=bTRjdWF2YXd3N2Vp">bhushan_patil_07__</a>
+      </div>
+
+      <div class="follow-card">
+        <span></span>
+        <h3>YouTube</h3>
+        <a href="#"> Not Available</a>
+      </div>
+
+      <div class="follow-card">
+        <span></span>
+        <h3>Facebook</h3>
+        <a href="#">Not Available</a>
+      </div>
+
+      <div class="follow-card">
+        <span></span>
+        <h3>Telegram</h3>
+        <a href="#">Not Available</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div>
+      <h3>Main</h3>
+      <a href="home.index.html">Home</a>
+      <a href="abaut.index.html">About</a>
+      <a href="follow.index.html">Follow</a>
+    </div>
+
+    <div>
+      <h3>Legal</h3>
+      <a href="#">Terms</a>
+      <a href="#">Privacy</a>
+      <a href="#">Refund</a>
+    </div>
+
+    <div>
+      <h3>Social</h3>
+      <a href="#">Instagram</a>
+      <a href="#">YouTube</a>
+    </div>
+    <h5>Website Created By Bhushan Patil</h5>
+  </footer>
+
+</body>
+
+</html>
