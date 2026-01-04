@@ -1,0 +1,204 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body {
+  background: #121212;
+  color: white;
+}
+
+/* ============ HEADER ============ */
+.header {
+  background: #121212;
+  padding: 15px;
+  text-align: center;
+}
+
+.logo-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.logo {
+  width: 60px;
+  fill: cyan;
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+  height: 70px;
+  background: #121212;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 15px;
+  position: relative;
+}
+.navbar a {
+  text-decoration: none;
+  color: white;
+  font-family: sans-serif;
+  align-items: center;
+  justify-content: space-around;
+  margin: 10px;
+  
+}
+/* BACK BUTTON */
+.back-btn {
+  font-size: 26px;
+  text-decoration: none;
+  color: cyan;
+}
+
+/* TITLE */
+.nav-title {
+  font-size: 36px;
+  color: cyan;
+  font-weight: bold;
+}
+
+/* MENU ICON */
+.menu-icon {
+  font-size: 30px;
+  color: white;
+  cursor: pointer;
+}
+
+/* HIDE CHECKBOX */
+#menu-toggle {
+  display: none;
+}
+
+/* SIDE MENU */
+.side-menu {
+  position: fixed;
+  top: 0;
+  left: -260px;
+  width: 250px;
+  height: 100vh;
+  background: #1a1a1a;
+  padding-top: 80px;
+  transition: 0.3s ease;
+  box-shadow: 4px 0 10px rgba(0,0,0,0.8);
+}
+.side-menu H2 {
+  padding: 15px 20px;
+}
+
+/* MENU LINKS */
+.side-menu a {
+  display: block;
+  padding: 15px 20px;
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.side-menu a:hover {
+  background: #333;
+}
+
+/* SLIDE MENU WHEN CLICK */
+#menu-toggle:checked ~ .side-menu {
+  left: 0;
+}
+
+/* ============ MAIN ============ */
+.Semister1{
+  background: linear-gradient(135deg, red, yellow);
+  padding: 35px 20px;
+  border-radius: 14px;
+  text-align: center;
+  margin-bottom: 25px;
+}
+.main {
+  padding: 30px;
+}
+
+.main h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.main h3 {
+  padding: 15px;
+  
+}
+
+.tests {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr) );
+  gap: 10px;
+}
+
+.test-card {
+  background: #1e1e1e;
+  padding: 20px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.test-card a {
+  color: white;
+  text-decoration: none;
+  background: #e50914;
+  padding: 8px 12px;
+  border-radius: 5px;
+}
+
+/* ============ FOOTER ============ */
+.footer {
+  background: #262626;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  display: grid;
+  justify-content: space-around;
+  padding: 30px;
+  gap: 20px;
+}
+
+.footer h3 {
+  margin-bottom: 10px;
+}
+
+.footer a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  margin-bottom: 5px;
+}
+
+/* ============ RESPONSIVE ============ */
+#menu-toggle {
+  display: none;
+}
+
+@media (max-width: 768px) {
+
+  .menu-icon {
+    display: block;
+    color: white;
+  }
+
+  .menu {
+    display: none;
+    flex-direction: column;
+    background: #111;
+    margin-top: 10px;
+    padding: 15px 0;
+  }
+
+  #menu-toggle:checked + .menu-icon + .menu {
+    display: flex;
+  }
+
+  .footer {
+    grid-template-columns: 1fr;
+    text-align: center;
+    
+  }
+}
