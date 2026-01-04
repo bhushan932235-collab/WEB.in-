@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fire & Safety MCQ - About</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: sans-serif;
+    }
+
+    body {
+      background: #121212;
+      color: white;
+    }
+
+    /* ============ HEADER ============ */
+    .header {
+      background: #121212;
+      padding: 15px;
+      text-align: center;
+    }
+
+    .logo-area {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .logo {
+      width: 60px;
+      fill: cyan;
+    }
+
+    .nav-title {
+      font-size: 36px;
+      color: cyan;
+      font-weight: bold;
+    }
+
+    /* ===== NAVBAR ===== */
+    .navbar {
+      height: 70px;
+      background: #121212;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 15px;
+      position: relative;
+    }
+
+    .navbar a {
+      text-decoration: none;
+      color: white;
+    }
+
+    .menu-icon {
+      font-size: 30px;
+      cursor: pointer;
+    }
+
+    #menu-toggle {
+      display: none;
+    }
+
+    /* SIDE MENU */
+    .side-menu {
+      position: fixed;
+      top: 0;
+      left: -260px;
+      width: 250px;
+      height: 100vh;
+      background: #1a1a1a;
+      padding-top: 80px;
+      transition: 0.3s;
+    }
+
+    .side-menu h2 {
+      padding: 15px 20px;
+    }
+
+    .side-menu a {
+      display: block;
+      padding: 15px 20px;
+      color: white;
+      text-decoration: none;
+    }
+
+    .side-menu a:hover {
+      background: #333;
+    }
+
+    #menu-toggle:checked~.side-menu {
+      left: 0;
+    }
+
+    /* ============ MAIN ABOUT PAGE ============ */
+    main {
+      padding: 25px 15px;
+    }
+
+    /* Hero */
+    .about-hero {
+      background: linear-gradient(135deg, #0d47a1, #1976d2);
+      padding: 35px 20px;
+      border-radius: 14px;
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .about-hero h1 {
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+
+    .about-hero p {
+      font-size: 14px;
+    }
+
+    /* Box */
+    .about-box {
+      background: #1e1e1e;
+      padding: 22px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+    }
+
+    .about-box h2 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .about-box p {
+      font-size: 14px;
+      line-height: 1.7;
+      color: #ddd;
+    }
+
+    /* Offer Grid */
+    .offer-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .offer-card {
+      background: #181818;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .offer-card span {
+      font-size: 26px;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    /* ============ FOOTER ============ */
+    .footer {
+      background: #262626;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      padding: 30px;
+      gap: 20px;
+    }
+
+    .footer h3 {
+      margin-bottom: 10px;
+    }
+
+    .footer a {
+      display: block;
+      color: white;
+      text-decoration: none;
+      margin-bottom: 5px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .footer {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .offer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="logo-area">
+      <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+        <path d="M236-345 100-480l440-440h271L236-345ZM540-40 303-277l237-237h271L574-277 811-40H540Z" />
+      </svg>
+      <div class="nav-title">Web.in</div>
+    </div>
+  </header>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <a href="index.html">home</a>
+    <a href="abaut.index.html">about</a>
+    <a href="follow.index.html">follow as</a>
+
+    <input type="checkbox" id="menu-toggle">
+    <label for="menu-toggle" class="menu-icon">☰</label>
+
+    <div class="side-menu">
+      <h2>FR </h2>
+      <a href="index.html">sem 1</a>
+      <a href="sem2.index.html">sem 2</a>
+      <a href="sem3.index.html">sem 3</a>
+      <a href="sem4.index.html">sem 4</a>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main>
+
+    <section class="about-hero">
+      <h1>About Web.in MCQ Exam</h1>
+      <p>Practice • Learn • Succeed</p>
+    </section>
+
+    <section class="about-box">
+      <h2>📘 About Us</h2>
+      <p>
+        Web.in MCQ Exam is an online platform designed for Fire & Safety
+        Engineering students to practice MCQs easily and effectively.
+      </p>
+    </section>
+
+    <section class="about-box">
+      <h2>🎯 Our Mission</h2>
+      <p>
+        To make exam preparation simple, accessible, and practice-focused
+        for all learners.
+      </p>
+    </section>
+
+    <section class="about-box">
+      <h2>🚀 What We Offer</h2>
+      <div class="offer-grid">
+        <div class="offer-card"><span>📝</span>Online MCQ Tests</div>
+        <div class="offer-card"><span>⚡</span>Instant Practice</div>
+        <div class="offer-card"><span>📱</span>User Friendly</div>
+        <div class="offer-card"><span>🎓</span>For All Students</div>
+      </div>
+    </section>
+
+    <section class="about-box">
+      <h2>🌟 Our Vision</h2>
+      <p>
+        To continuously improve this platform with more subjects,
+        more questions, and better learning features.
+      </p>
+    </section>
+    <section class="about-box">
+      <h2>✍️ developer</h2>
+      <p>
+        I am Bhushan, a learner and developer of <strong>Web.in MCQ Exam</strong>.
+        This website is built to help Fire & Safety Engineering students
+        prepare better through MCQ practice.
+      </p>
+
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div>
+      <h3>Main</h3>
+      <a href="index.html">Home</a>
+      <a href="abaut.index.html">About</a>
+      <a href="follow.index.html">Follow</a>
+    </div>
+
+    <div>
+      <h3>Legal</h3>
+      <a href="#">Terms</a>
+      <a href="#">Privacy</a>
+      <a href="#">Refund</a>
+    </div>
+
+    <div>
+      <h3>Social</h3>
+      <a href="#">Instagram</a>
+      <a href="#">YouTube</a>
+    </div>
+    <h5>Website Created By Bhushan Patil</h5>
+  </footer>
+
+</body>
+
+</html>

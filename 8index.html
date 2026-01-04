@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>🔥 Basics of Fire Science Exam</title>
+
+<style>
+* { box-sizing: border-box; }
+body {
+  font-family: "Poppins", sans-serif;
+  background: #fff6f0;
+  margin: 0;
+  padding: 0;
+}
+header {
+  text-align: center;
+  background: linear-gradient(90deg, #ff6b00, #ff914d);
+  color: white;
+  padding: 20px;
+  font-size: 26px;
+  font-weight: bold;
+}
+#floatingTimer {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  background: #ff6b00;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 18px;
+  z-index: 9999;
+}
+.exam-container {
+  max-width: 900px;
+  margin: 40px auto;
+  background: #fff;
+  padding: 30px;
+  border-radius: 15px;
+}
+.question {
+  margin-bottom: 25px;
+  padding: 15px;
+  border: 1px solid #eee;
+  border-radius: 10px;
+}
+label { display: block; margin-bottom: 6px; cursor: pointer; }
+button {
+  background: linear-gradient(90deg, #ff6b00, #ff914d);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin: 20px auto;
+  display: block;
+}
+
+/* RESULT PAGE */
+.result-container {
+  max-width: 700px;
+  margin: 50px auto;
+  background: #fff;
+  border-radius: 12px;
+  display: none;
+}
+.header {
+  background: linear-gradient(90deg, #ff6b00, #ff914d);
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+  font-size: 24px;
+}
+.tabs {
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 2px solid #eee;
+}
+.tab {
+  padding: 12px;
+  cursor: pointer;
+}
+.tab.active {
+  color: #ff6b00;
+  border-bottom: 3px solid #ff6b00;
+}
+.content { display: none; padding: 25px; }
+.content.active { display: block; }
+
+.score-section {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.circle {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 5px solid #ff6b00;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+}
+.circle-label { text-align: center; font-size: 14px; }
+.rank {
+  background: #fff5e6;
+  padding: 12px;
+  text-align: center;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+.wrong-item {
+  background: #fff3f3;
+  border-left: 5px solid red;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<header>🔥 Basics of Fire Science Exam</header>
+<div id="floatingTimer">⏱️ 00:00:00</div>
+
+<div class="exam-container" id="exam">
+<form id="examForm">
+<div id="questions"></div>
+<button type="submit">Submit Exam</button>
+</form>
+</div>
+
+<div class="result-container" id="resultPage">
+<div class="header">🔥 Exam Result</div>
+
+<div class="tabs">
+  <div class="tab active" onclick="openTab(event,'result')">Test Result</div>
+  <div class="tab" onclick="openTab(event,'wrong')">Wrong Questions ❓</div>
+  <div class="tab" onclick="openTab(event,'rank')">Rank List</div>
+</div>
+
+<div id="result" class="content active">
+  <div class="score-section">
+    <div>
+      <div class="circle" id="scorePercent">0%</div>
+      <div class="circle-label">Score Ratio</div>
+    </div>
+    <div>
+      <div class="circle" id="scoreValue">0/0</div>
+      <div class="circle-label">Score</div>
+    </div>
+    <div>
+      <div class="circle" id="timeTaken">0s</div>
+      <div class="circle-label">Total Time</div>
+    </div>
+  </div>
+  <div class="rank" id="rankMsg"></div>
+</div>
+
+<div id="wrong" class="content"></div>
+
+<div id="rank" class="content">
+  <p>1. You — <span id="rankScore"></span>%</p>
+  <p>2. Student B — 92%</p>
+  <p>3. Student C — 85%</p>
+</div>
+</div>
+
+<script>
+// ================= QUESTIONS (SET 1) =================
+const questionsData = [
+{q:"Fire load density is best defined as:",a:["Weight of combustibles per compartment","Heat release per unit floor area","Fire resistance per unit height","Total calorific value of building"],correct:1},
+
+{q:"The unit most commonly used for fire load density is:",a:["kg/m²","MJ/m²","kW/m²","°C"],correct:1},
+
+{q:"A warehouse storing plastics will generally be classified as:",a:["Light hazard","Ordinary hazard","Extra high hazard","Residential hazard"],correct:2},
+
+{q:"Which factor MOST increases fire severity in a compartment?",a:["Wall thickness","Ventilation opening size","Floor area","Ceiling color"],correct:1},
+
+{q:"Integrity failure of a fire-resisting element occurs when:",a:["Temperature rises on unexposed face","Structural collapse happens","Flames or hot gases pass through","Surface finish ignites"],correct:2},
+
+{q:"Insulation criterion in fire resistance refers to:",a:["Flame spread","Smoke leakage","Temperature rise on unexposed face","Load carrying capacity"],correct:2},
+
+{q:"Which structural member generally fails first in fire?",a:["RCC column","Steel beam","Brick masonry wall","Stone footing"],correct:1},
+
+{q:"Steel loses significant strength at approximately:",a:["200°C","350°C","550°C","900°C"],correct:2},
+
+{q:"Passive fire protection does NOT include:",a:["Fire wall","Fire door","Fire damper","Sprinkler"],correct:3},
+
+{q:"Flame spread index test is carried out using:",a:["Cone calorimeter","Steiner tunnel apparatus","Bomb calorimeter","Smoke density chamber"],correct:1},
+
+{q:"Maximum permissible flame spread index for exit routes is:",a:["0–25","26–75","76–150","Above 150"],correct:0},
+
+{q:"Pressurization systems are designed mainly to:",a:["Supply fresh air","Prevent smoke entry","Reduce temperature","Increase oxygen level"],correct:1},
+
+{q:"Recommended pressure difference for staircase pressurization is around:",a:["5 Pa","15 Pa","25 Pa","60 Pa"],correct:2},
+
+{q:"Excessive pressurization can result in:",a:["Smoke leakage","Door opening difficulty","Fire spread","Pump failure"],correct:1},
+
+{q:"Basement smoke extraction design is based on:",a:["Floor area only","Ceiling height only","Air changes per hour","Number of exits"],correct:2},
+
+{q:"Mechanical ventilation in basements should operate:",a:["Continuously","Manually only","Automatically with fire alarm","Only during occupancy"],correct:2},
+
+{q:"Minimum capacity of fire lift as per NBC is:",a:["8 persons","10 persons","13 persons","20 persons"],correct:2},
+
+{q:"Fire lift should have:",a:["Single power supply","Independent power supply","Solar backup only","Manual operation"],correct:1},
+
+{q:"Fire control room must have:",a:["Glass partitions","Wooden doors","Direct access from outside","Carpet flooring"],correct:2},
+
+{q:"Minimum pressure required at the most remote hydrant outlet is:",a:["1.5 kg/cm²","2.5 kg/cm²","3.5 kg/cm²","6.0 kg/cm²"],correct:2},
+
+{q:"Which pump maintains system pressure during normal conditions?",a:["Main pump","Standby pump","Jockey pump","Booster pump"],correct:2},
+
+{q:"Sprinkler discharge density mainly depends on:",a:["Pipe diameter","Hazard classification","Tank capacity","Pump rating"],correct:1},
+
+{q:"Quick response sprinklers are recommended for:",a:["Extra high hazard occupancies","Storage warehouses","Light hazard occupancies","Oil refineries"],correct:2},
+
+{q:"Foam flooding systems are best suited for:",a:["Electrical rooms","Transformer rooms","Flammable liquid hazards","Residential buildings"],correct:2},
+
+{q:"CO₂ flooding systems are hazardous because they:",a:["Leave residue","Damage equipment","Reduce oxygen concentration","Increase pressure"],correct:2},
+
+{q:"Pre-discharge alarm in gaseous systems is provided to:",a:["Activate pumps","Warn occupants to evacuate","Detect smoke","Cool the enclosure"],correct:1},
+
+{q:"Inert gas systems extinguish fire by:",a:["Cooling","Smothering (oxygen reduction)","Chemical inhibition","Explosion"],correct:1},
+
+{q:"Inert gas systems typically reduce oxygen level to:",a:["5–6%","8–10%","12–15%","18–20%"],correct:2},
+
+{q:"UN number on a vehicle identifies:",a:["Driver","Vehicle type","Hazardous substance","Fire extinguisher"],correct:2},
+
+{q:"HAZCHEM code number indicates:",a:["Toxicity","Firefighting medium","Evacuation distance","UN class"],correct:1},
+
+{q:"Letter “E” in HAZCHEM code signifies:",a:["Explosion","Electrical hazard","Evacuation required","Emergency exit"],correct:2},
+
+{q:"Emergency Information Panel background colour is:",a:["Red","Yellow","Orange","Blue"],correct:2},
+
+{q:"TREM card must be carried by:",a:["Fire officer","Transport company","Vehicle driver","District authority"],correct:2},
+
+{q:"MSDS does NOT include:",a:["Firefighting measures","Health hazards","Market price","First aid measures"],correct:2},
+
+{q:"The MOST effective fire safety approach is:",a:["Firefighting only","Detection only","Integrated prevention, protection & training","Dependence on fire brigade"],correct:2}
+];
+// ================= RENDER =================
+const qDiv=document.getElementById("questions");
+questionsData.forEach((q,i)=>{
+  let html=`<div class="question"><h3>${i+1}. ${q.q}</h3>`;
+  q.a.forEach((opt,j)=>{
+    html+=`<label><input type="radio" name="q${i}" value="${j}"> ${opt}</label>`;
+  });
+  html+="</div>";
+  qDiv.innerHTML+=html;
+});
+
+// ================= TIMER =================
+let seconds=0;
+const timer=setInterval(()=>{
+  seconds++;
+  let h=String(Math.floor(seconds/3600)).padStart(2,"0");
+  let m=String(Math.floor((seconds%3600)/60)).padStart(2,"0");
+  let s=String(seconds%60).padStart(2,"0");
+  document.getElementById("floatingTimer").textContent=`⏱️ ${h}:${m}:${s}`;
+},1000);
+
+// ================= SUBMIT =================
+document.getElementById("examForm").addEventListener("submit",e=>{
+e.preventDefault();
+clearInterval(timer);
+
+let correct=0;
+let wrongHTML="";
+const total=questionsData.length;
+
+questionsData.forEach((q,i)=>{
+  const ans=document.querySelector(`input[name=q${i}]:checked`);
+  if(ans && Number(ans.value)===q.correct) correct++;
+  else{
+    wrongHTML+=`
+    <div class="wrong-item">
+    <b>Q${i+1}:</b> ${q.q}<br>
+    ❌ ${ans?q.a[ans.value]:"Not Answered"}<br>
+    ✅ ${q.a[q.correct]}
+    </div>`;
+  }
+});
+
+const percent=Math.round((correct/total)*100);
+
+document.getElementById("scorePercent").textContent=percent+"%";
+document.getElementById("scoreValue").textContent=`${correct}/${total}`;
+document.getElementById("timeTaken").textContent=
+`${Math.floor(seconds/60)}m ${seconds%60}s`;
+document.getElementById("rankScore").textContent=percent;
+document.getElementById("rankMsg").textContent=
+percent===100?"Excellent! Rank #1 🔥":`You scored ${percent}%. Keep improving!`;
+
+document.getElementById("wrong").innerHTML=wrongHTML;
+document.getElementById("exam").style.display="none";
+document.getElementById("floatingTimer").style.display="none";
+document.getElementById("resultPage").style.display="block";
+});
+
+function openTab(e,id){
+document.querySelectorAll(".content").forEach(c=>c.classList.remove("active"));
+document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));
+document.getElementById(id).classList.add("active");
+e.target.classList.add("active");
+}
+</script>
+
+</body>
+</html>
