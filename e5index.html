@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>🔥 fire engineering science mcq test</title>
+
+<style>
+* { box-sizing: border-box; }
+body {
+  font-family: "Poppins", sans-serif;
+  background: #fff6f0;
+  margin: 0;
+  padding: 0;
+}
+header {
+  text-align: center;
+  background: linear-gradient(90deg, #ff6b00, #ff914d);
+  color: white;
+  padding: 20px;
+  font-size: 26px;
+  font-weight: bold;
+}
+#floatingTimer {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  background: #ff6b00;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 18px;
+  z-index: 9999;
+}
+.exam-container {
+  max-width: 900px;
+  margin: 40px auto;
+  background: #fff;
+  padding: 30px;
+  border-radius: 15px;
+}
+.question {
+  margin-bottom: 25px;
+  padding: 15px;
+  border: 1px solid #eee;
+  border-radius: 10px;
+}
+label { display: block; margin-bottom: 6px; cursor: pointer; }
+button {
+  background: linear-gradient(90deg, #ff6b00, #ff914d);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin: 20px auto;
+  display: block;
+}
+
+/* RESULT PAGE */
+.result-container {
+  max-width: 700px;
+  margin: 50px auto;
+  background: #fff;
+  border-radius: 12px;
+  display: none;
+}
+.header {
+  background: linear-gradient(90deg, #ff6b00, #ff914d);
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+  font-size: 24px;
+}
+.tabs {
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 2px solid #eee;
+}
+.tab {
+  padding: 12px;
+  cursor: pointer;
+}
+.tab.active {
+  color: #ff6b00;
+  border-bottom: 3px solid #ff6b00;
+}
+.content { display: none; padding: 25px; }
+.content.active { display: block; }
+
+.score-section {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.circle {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 5px solid #ff6b00;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+}
+.circle-label { text-align: center; font-size: 14px; }
+.rank {
+  background: #fff5e6;
+  padding: 12px;
+  text-align: center;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+.wrong-item {
+  background: #fff3f3;
+  border-left: 5px solid red;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<header>🔥 fire engineering science mcq test 5</header>
+<div id="floatingTimer">⏱️ 00:00:00</div>
+
+<div class="exam-container" id="exam">
+<form id="examForm">
+<div id="questions"></div>
+<button type="submit">Submit Exam</button>
+</form>
+</div>
+
+<div class="result-container" id="resultPage">
+<div class="header">🔥 Exam Result</div>
+
+<div class="tabs">
+  <div class="tab active" onclick="openTab(event,'result')">Test Result</div>
+  <div class="tab" onclick="openTab(event,'wrong')">Wrong Questions ❓</div>
+  <div class="tab" onclick="openTab(event,'rank')">Rank List</div>
+</div>
+
+<div id="result" class="content active">
+  <div class="score-section">
+    <div>
+      <div class="circle" id="scorePercent">0%</div>
+      <div class="circle-label">Score Ratio</div>
+    </div>
+    <div>
+      <div class="circle" id="scoreValue">0/0</div>
+      <div class="circle-label">Score</div>
+    </div>
+    <div>
+      <div class="circle" id="timeTaken">0s</div>
+      <div class="circle-label">Total Time</div>
+    </div>
+  </div>
+  <div class="rank" id="rankMsg"></div>
+</div>
+
+<div id="wrong" class="content"></div>
+
+<div id="rank" class="content">
+  <p>1. You — <span id="rankScore"></span>%</p>
+  <p>2. Student B — 92%</p>
+  <p>3. Student C — 85%</p>
+</div>
+</div>
+
+<script>
+// ================= QUESTIONS (SET 5) =================
+const questionsData = [
+{q:"Actual flame temperature is lower than adiabatic flame temperature due to:",a:["Radiation and convection losses","Excess fuel","Chemical dissociation","High pressure"],correct:0},
+
+{q:"Luminous flame becomes non-luminous mainly by:",a:["Increasing fuel flow","Increasing air supply","Increasing pressure","Decreasing turbulence"],correct:1},
+
+{q:"Carbon monoxide is maximum in which flame region?",a:["Outer oxidizing zone","Post-combustion zone","Luminous zone","Inner dark zone"],correct:2},
+
+{q:"Flame flashback in premixed burners is prevented by:",a:["Reducing air","Increasing burner port velocity","Increasing fuel richness","Lowering temperature"],correct:1},
+
+{q:"Explosion severity increases most due to:",a:["Flame colour","Rate of energy release","Smoke production","Fuel odour"],correct:1},
+
+{q:"Rollover indicates presence of:",a:["Steam","Water vapour","Unburnt hot gases","Oxygen surplus"],correct:2},
+
+{q:"Flashover temperature range is approximately:",a:["100–200°C","300–400°C","500–600°C","Above 1000°C"],correct:2},
+
+{q:"Backdraft will NOT occur if:",a:["Fuel gases exist","Temperature is high","Oxygen is suddenly introduced","Continuous ventilation is maintained"],correct:3},
+
+{q:"Backdraft explosion force is caused by:",a:["Steam expansion","Oxygen enrichment","Rapid combustion of gases","Structural collapse"],correct:2},
+
+{q:"Boil over mainly occurs in:",a:["Shallow trays","Deep fuel storage tanks","Gas cylinders","Electrical panels"],correct:1},
+
+{q:"The MOST dangerous extinguishing agent for hot oil fire is:",a:["Foam","CO₂","Dry powder","Water"],correct:3},
+
+{q:"Froth over differs from boil over because froth over:",a:["Is explosive","Is less violent","Occurs in gas fires","Produces pressure wave"],correct:1},
+
+{q:"Spill fire spread rate depends on:",a:["Surface area only","Fuel viscosity only","Wind only","Surface area, viscosity and wind"],correct:3},
+
+{q:"UVCE is dangerous mainly due to:",a:["Flame temperature","Smoke toxicity","Over-pressure shock wave","Long duration fire"],correct:2},
+
+{q:"UVCE normally occurs when vapour cloud is:",a:["Above UFL","Below LFL","Within flammable limits","Oxygen free"],correct:2},
+
+{q:"Jet fire flame length increases with:",a:["Lower pressure","Lower velocity","Higher release pressure","Lower temperature"],correct:2},
+
+{q:"Jet fire extinguishment is difficult because of:",a:["High smoke","Continuous fuel release","Low oxygen","Short flame"],correct:1},
+
+{q:"Flash fire causes injury mainly due to:",a:["Smoke inhalation","Structural collapse","Thermal radiation","Pressure wave"],correct:2},
+
+{q:"Flash fire duration is generally:",a:["Long","Moderate","Continuous","Very short"],correct:3},
+
+{q:"Fire cloud formation is associated with:",a:["Low-intensity fires","Electrical fires","Large wildfires / explosions","Cooking fires"],correct:2},
+
+{q:"Pyrocumulonimbus clouds increase fire spread by:",a:["Rainfall","Oxygen reduction","Lightning and strong winds","Cooling atmosphere"],correct:2},
+
+{q:"BLEVE occurs due to:",a:["Chemical reaction","Vessel rupture of superheated liquid","Dust explosion","Vapour cloud ignition"],correct:1},
+
+{q:"Fireball size in BLEVE depends mainly on:",a:["Tank colour","Tank shape","Quantity of liquid","Ambient temperature"],correct:2},
+
+{q:"Major lethal effect in BLEVE incidents is:",a:["Smoke","Noise","Thermal radiation","Water vapour"],correct:2},
+
+{q:"Explosion over-pressure primarily causes:",a:["Burns","Structural damage","Smoke spread","Oxygen depletion"],correct:1},
+
+{q:"Flame acceleration occurs due to:",a:["Smooth walls","Cooling","Obstacles and turbulence","Low pressure"],correct:2},
+
+{q:"Transition from deflagration to detonation is called:",a:["Flashover","Backdraft","Rollover","DDT"],correct:3},
+
+{q:"Flashover can be delayed effectively by:",a:["Increasing fuel load","Early gas cooling","Closing all ventilation","Increasing temperature"],correct:1},
+
+{q:"Jet fire hazard is dominated by:",a:["Smoke","Toxic gases","Radiation heat","Pressure wave"],correct:2},
+
+{q:"Best passive protection against jet fire is:",a:["Foam","Water spray","Distance and shielding","CO₂"],correct:2},
+
+{q:"MSBTE classifies UVCE, BLEVE, flashover as:",a:["Fire causes","Fire classes","Fire phenomena","Fire extinguishing methods"],correct:2},
+
+{q:"Explosion risk reduces MOST by:",a:["Fire extinguishers","PPE","Hazard identification and control","Smoke detectors"],correct:2},
+
+{q:"Flash fire will NOT occur if:",a:["Fuel is present","Ignition source exists","Vapour is outside flammable range","Oxygen is present"],correct:2},
+
+{q:"Continuous controlled ventilation helps prevent:",a:["Flash fire","Pool fire","Backdraft","Jet fire"],correct:2},
+
+{q:"The MOST critical safety measure in fire engineering is:",a:["Firefighting only","Early detection only","Prevention and risk assessment","Post-fire investigation"],correct:2}
+];
+// ================= RENDER =================
+const qDiv=document.getElementById("questions");
+questionsData.forEach((q,i)=>{
+  let html=`<div class="question"><h3>${i+1}. ${q.q}</h3>`;
+  q.a.forEach((opt,j)=>{
+    html+=`<label><input type="radio" name="q${i}" value="${j}"> ${opt}</label>`;
+  });
+  html+="</div>";
+  qDiv.innerHTML+=html;
+});
+
+// ================= TIMER =================
+let seconds=0;
+const timer=setInterval(()=>{
+  seconds++;
+  let h=String(Math.floor(seconds/3600)).padStart(2,"0");
+  let m=String(Math.floor((seconds%3600)/60)).padStart(2,"0");
+  let s=String(seconds%60).padStart(2,"0");
+  document.getElementById("floatingTimer").textContent=`⏱️ ${h}:${m}:${s}`;
+},1000);
+
+// ================= SUBMIT =================
+document.getElementById("examForm").addEventListener("submit",e=>{
+e.preventDefault();
+clearInterval(timer);
+
+let correct=0;
+let wrongHTML="";
+const total=questionsData.length;
+
+questionsData.forEach((q,i)=>{
+  const ans=document.querySelector(`input[name=q${i}]:checked`);
+  if(ans && Number(ans.value)===q.correct) correct++;
+  else{
+    wrongHTML+=`
+    <div class="wrong-item">
+    <b>Q${i+1}:</b> ${q.q}<br>
+    ❌ ${ans?q.a[ans.value]:"Not Answered"}<br>
+    ✅ ${q.a[q.correct]}
+    </div>`;
+  }
+});
+
+const percent=Math.round((correct/total)*100);
+
+document.getElementById("scorePercent").textContent=percent+"%";
+document.getElementById("scoreValue").textContent=`${correct}/${total}`;
+document.getElementById("timeTaken").textContent=
+`${Math.floor(seconds/60)}m ${seconds%60}s`;
+document.getElementById("rankScore").textContent=percent;
+document.getElementById("rankMsg").textContent=
+percent===100?"Excellent! Rank #1 🔥":`You scored ${percent}%. Keep improving!`;
+
+document.getElementById("wrong").innerHTML=wrongHTML;
+document.getElementById("exam").style.display="none";
+document.getElementById("floatingTimer").style.display="none";
+document.getElementById("resultPage").style.display="block";
+});
+
+function openTab(e,id){
+document.querySelectorAll(".content").forEach(c=>c.classList.remove("active"));
+document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));
+document.getElementById(id).classList.add("active");
+e.target.classList.add("active");
+}
+</script>
+
+</body>
+</html>

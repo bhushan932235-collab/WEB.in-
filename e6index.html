@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>🔥 fire engineering science mcq test</title>
+
+<style>
+* { box-sizing: border-box; }
+body {
+  font-family: "Poppins", sans-serif;
+  background: #fff6f0;
+  margin: 0;
+  padding: 0;
+}
+header {
+  text-align: center;
+  background: linear-gradient(90deg, #ff6b00, #ff914d);
+  color: white;
+  padding: 20px;
+  font-size: 26px;
+  font-weight: bold;
+}
+#floatingTimer {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  background: #ff6b00;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 18px;
+  z-index: 9999;
+}
+.exam-container {
+  max-width: 900px;
+  margin: 40px auto;
+  background: #fff;
+  padding: 30px;
+  border-radius: 15px;
+}
+.question {
+  margin-bottom: 25px;
+  padding: 15px;
+  border: 1px solid #eee;
+  border-radius: 10px;
+}
+label { display: block; margin-bottom: 6px; cursor: pointer; }
+button {
+  background: linear-gradient(90deg, #ff6b00, #ff914d);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin: 20px auto;
+  display: block;
+}
+
+/* RESULT PAGE */
+.result-container {
+  max-width: 700px;
+  margin: 50px auto;
+  background: #fff;
+  border-radius: 12px;
+  display: none;
+}
+.header {
+  background: linear-gradient(90deg, #ff6b00, #ff914d);
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+  font-size: 24px;
+}
+.tabs {
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 2px solid #eee;
+}
+.tab {
+  padding: 12px;
+  cursor: pointer;
+}
+.tab.active {
+  color: #ff6b00;
+  border-bottom: 3px solid #ff6b00;
+}
+.content { display: none; padding: 25px; }
+.content.active { display: block; }
+
+.score-section {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.circle {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 5px solid #ff6b00;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+}
+.circle-label { text-align: center; font-size: 14px; }
+.rank {
+  background: #fff5e6;
+  padding: 12px;
+  text-align: center;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+.wrong-item {
+  background: #fff3f3;
+  border-left: 5px solid red;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<header>🔥 fire engineering science mcq test 6</header>
+<div id="floatingTimer">⏱️ 00:00:00</div>
+
+<div class="exam-container" id="exam">
+<form id="examForm">
+<div id="questions"></div>
+<button type="submit">Submit Exam</button>
+</form>
+</div>
+
+<div class="result-container" id="resultPage">
+<div class="header">🔥 Exam Result</div>
+
+<div class="tabs">
+  <div class="tab active" onclick="openTab(event,'result')">Test Result</div>
+  <div class="tab" onclick="openTab(event,'wrong')">Wrong Questions ❓</div>
+  <div class="tab" onclick="openTab(event,'rank')">Rank List</div>
+</div>
+
+<div id="result" class="content active">
+  <div class="score-section">
+    <div>
+      <div class="circle" id="scorePercent">0%</div>
+      <div class="circle-label">Score Ratio</div>
+    </div>
+    <div>
+      <div class="circle" id="scoreValue">0/0</div>
+      <div class="circle-label">Score</div>
+    </div>
+    <div>
+      <div class="circle" id="timeTaken">0s</div>
+      <div class="circle-label">Total Time</div>
+    </div>
+  </div>
+  <div class="rank" id="rankMsg"></div>
+</div>
+
+<div id="wrong" class="content"></div>
+
+<div id="rank" class="content">
+  <p>1. You — <span id="rankScore"></span>%</p>
+  <p>2. Student B — 92%</p>
+  <p>3. Student C — 85%</p>
+</div>
+</div>
+
+<script>
+// ================= QUESTIONS (SET 6) =================
+const questionsData = [
+  { q: "Flame emissivity mainly depends on:", a: ["Oxygen content", "Presence of soot particles", "Pressure only", "Flame height"], correct: 1 },
+  
+  { q: "Blue colour in flame indicates:", a: ["Incomplete combustion", "Presence of carbon particles", "Excited CH radicals", "High smoke content"], correct: 2 },
+  
+  { q: "Increase in pressure generally causes flame speed to:", a: ["Increase", "Decrease", "Become zero", "Remain constant"], correct: 1 },
+  
+  { q: "Flame quenching distance is the:", a: ["Distance flame travels", "Minimum gap where flame extinguishes", "Maximum flame length", "Width of burner port"], correct: 1 },
+  
+  { q: "Detonation velocity is:", a: ["Less than sound speed", "Equal to sound speed", "Greater than sound speed", "Zero"], correct: 2 },
+  
+  { q: "Explosion index is used to measure:", a: ["Flame temperature", "Explosion severity", "Smoke density", "Toxicity"], correct: 1 },
+  
+  { q: "Confined explosions are more dangerous because:", a: ["Heat loss is high", "Pressure cannot dissipate", "Oxygen is low", "Flame is short"], correct: 1 },
+  
+  { q: "Flashover probability increases with:", a: ["Low fuel load", "High ceiling height", "High heat release rate", "Early ventilation"], correct: 2 },
+  
+  { q: "Neutral plane movement downward indicates:", a: ["Fire decay", "Backdraft condition", "Improved ventilation", "Fire extinguishment"], correct: 1 },
+  
+  { q: "Backdraft smoke colour is typically:", a: ["White", "Light grey", "Dense black", "Blue"], correct: 2 },
+  
+  { q: "Which action reduces backdraft risk MOST?", a: ["Breaking windows suddenly", "Horizontal ventilation first", "Vertical controlled ventilation", "Increasing fuel load"], correct: 2 },
+  
+  { q: "Slop over occurs due to:", a: ["Sudden water application on oil surface", "Fuel vapour explosion", "Electrical arc", "Gas leakage"], correct: 0 },
+  
+  { q: "Slop over severity is:", a: ["Greater than boil over", "Equal to BLEVE", "Less than boil over", "Same as flash fire"], correct: 2 },
+  
+  { q: "Pool fire burning rate depends mainly on:", a: ["Pool diameter", "Flame colour", "Wind noise", "Smoke"], correct: 0 },
+  
+  { q: "Pool fire flame height is proportional to:", a: ["Pool diameter", "Oxygen percentage", "Pressure only", "Fuel colour"], correct: 0 },
+  
+  { q: "Vapour cloud dispersion depends MOST on:", a: ["Cloud colour", "Wind speed and terrain", "Ignition source", "Flame speed"], correct: 1 },
+  
+  { q: "UVCE damage is minimum when ignition is:", a: ["Delayed", "Weak and slow", "At centre of cloud", "Strong and sudden"], correct: 1 },
+  
+  { q: "Jet fire shape is usually:", a: ["Spherical", "Conical", "Flat", "Circular"], correct: 1 },
+  
+  { q: "Radiation from jet fire decreases with:", a: ["Increase in pressure", "Increase in flame length", "Increase in distance", "Increase in fuel flow"], correct: 2 },
+  
+  { q: "Fire whirl formation requires:", a: ["Flat terrain", "Strong vertical convection", "Low temperature", "Water spray"], correct: 1 },
+  
+  { q: "Fire whirls increase danger by:", a: ["Cooling flames", "Increasing flame height and spread", "Reducing oxygen", "Producing rain"], correct: 1 },
+  
+  { q: "Fire load density is expressed in:", a: ["kW/m²", "MJ/m²", "kg/m³", "°C"], correct: 1 },
+  
+  { q: "High fire load density results in:", a: ["Lower flashover risk", "Shorter fire duration", "Higher fire severity", "Easier suppression"], correct: 2 },
+  
+  { q: "Thermal radiation injury depends on:", a: ["Exposure time and distance", "Smoke density only", "Pressure wave", "Noise"], correct: 0 },
+  
+  { q: "Safe separation distance is calculated mainly to reduce:", a: ["Noise", "Smoke", "Radiation effects", "Flame colour"], correct: 2 },
+  
+  { q: "Explosion venting is provided to:", a: ["Increase pressure", "Reduce over-pressure", "Stop combustion", "Increase flame speed"], correct: 1 },
+  
+  { q: "Deflagration pressure rise rate is:", a: ["Instantaneous", "Very slow", "Moderate", "Infinite"], correct: 2 },
+  
+  { q: "Dust explosion requires:", a: ["Solid fuel only", "Fuel in powdered form and dispersion", "Liquid fuel", "Gas fuel only"], correct: 1 },
+  
+  { q: "Dust explosion pentagon includes all EXCEPT:", a: ["Fuel", "Dispersion", "Ignition", "Cooling"], correct: 3 },
+  
+  { q: "Best method to prevent dust explosion is:", a: ["Increase ignition energy", "Reduce dust concentration", "Increase confinement", "Increase turbulence"], correct: 1 },
+  
+  { q: "Fire triangle is insufficient for dust explosion because:", a: ["Oxygen not required", "Ignition not required", "Dispersion and confinement are also required", "Fuel not required"], correct: 2 },
+  
+  { q: "Fire dynamics studies mainly:", a: ["Fire causes", "Fire behaviour and growth", "Fire investigation", "Fire law"], correct: 1 },
+  
+  { q: "Compartment fire growth depends on:", a: ["Ventilation and fuel", "Colour of walls", "Firefighting method", "Noise"], correct: 0 },
+  
+  { q: "The MOST reliable indicator of impending flashover is:", a: ["Smoke colour", "High heat at floor", "Rollover at ceiling", "Loud noise"], correct: 2 },
+  
+  { q: "Fire engineering control hierarchy gives FIRST priority to:", a: ["Firefighting", "PPE", "Elimination / prevention", "Detection"], correct: 2 }
+];
+// ================= RENDER =================
+const qDiv=document.getElementById("questions");
+questionsData.forEach((q,i)=>{
+  let html=`<div class="question"><h3>${i+1}. ${q.q}</h3>`;
+  q.a.forEach((opt,j)=>{
+    html+=`<label><input type="radio" name="q${i}" value="${j}"> ${opt}</label>`;
+  });
+  html+="</div>";
+  qDiv.innerHTML+=html;
+});
+
+// ================= TIMER =================
+let seconds=0;
+const timer=setInterval(()=>{
+  seconds++;
+  let h=String(Math.floor(seconds/3600)).padStart(2,"0");
+  let m=String(Math.floor((seconds%3600)/60)).padStart(2,"0");
+  let s=String(seconds%60).padStart(2,"0");
+  document.getElementById("floatingTimer").textContent=`⏱️ ${h}:${m}:${s}`;
+},1000);
+
+// ================= SUBMIT =================
+document.getElementById("examForm").addEventListener("submit",e=>{
+e.preventDefault();
+clearInterval(timer);
+
+let correct=0;
+let wrongHTML="";
+const total=questionsData.length;
+
+questionsData.forEach((q,i)=>{
+  const ans=document.querySelector(`input[name=q${i}]:checked`);
+  if(ans && Number(ans.value)===q.correct) correct++;
+  else{
+    wrongHTML+=`
+    <div class="wrong-item">
+    <b>Q${i+1}:</b> ${q.q}<br>
+    ❌ ${ans?q.a[ans.value]:"Not Answered"}<br>
+    ✅ ${q.a[q.correct]}
+    </div>`;
+  }
+});
+
+const percent=Math.round((correct/total)*100);
+
+document.getElementById("scorePercent").textContent=percent+"%";
+document.getElementById("scoreValue").textContent=`${correct}/${total}`;
+document.getElementById("timeTaken").textContent=
+`${Math.floor(seconds/60)}m ${seconds%60}s`;
+document.getElementById("rankScore").textContent=percent;
+document.getElementById("rankMsg").textContent=
+percent===100?"Excellent! Rank #1 🔥":`You scored ${percent}%. Keep improving!`;
+
+document.getElementById("wrong").innerHTML=wrongHTML;
+document.getElementById("exam").style.display="none";
+document.getElementById("floatingTimer").style.display="none";
+document.getElementById("resultPage").style.display="block";
+});
+
+function openTab(e,id){
+document.querySelectorAll(".content").forEach(c=>c.classList.remove("active"));
+document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));
+document.getElementById(id).classList.add("active");
+e.target.classList.add("active");
+}
+</script>
+
+</body>
+</html>

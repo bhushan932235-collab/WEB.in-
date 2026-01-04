@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>🔥 fire engineering science mcq test</title>
+
+<style>
+* { box-sizing: border-box; }
+body {
+  font-family: "Poppins", sans-serif;
+  background: #fff6f0;
+  margin: 0;
+  padding: 0;
+}
+header {
+  text-align: center;
+  background: linear-gradient(90deg, #ff6b00, #ff914d);
+  color: white;
+  padding: 20px;
+  font-size: 26px;
+  font-weight: bold;
+}
+#floatingTimer {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  background: #ff6b00;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 18px;
+  z-index: 9999;
+}
+.exam-container {
+  max-width: 900px;
+  margin: 40px auto;
+  background: #fff;
+  padding: 30px;
+  border-radius: 15px;
+}
+.question {
+  margin-bottom: 25px;
+  padding: 15px;
+  border: 1px solid #eee;
+  border-radius: 10px;
+}
+label { display: block; margin-bottom: 6px; cursor: pointer; }
+button {
+  background: linear-gradient(90deg, #ff6b00, #ff914d);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin: 20px auto;
+  display: block;
+}
+
+/* RESULT PAGE */
+.result-container {
+  max-width: 700px;
+  margin: 50px auto;
+  background: #fff;
+  border-radius: 12px;
+  display: none;
+}
+.header {
+  background: linear-gradient(90deg, #ff6b00, #ff914d);
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+  font-size: 24px;
+}
+.tabs {
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 2px solid #eee;
+}
+.tab {
+  padding: 12px;
+  cursor: pointer;
+}
+.tab.active {
+  color: #ff6b00;
+  border-bottom: 3px solid #ff6b00;
+}
+.content { display: none; padding: 25px; }
+.content.active { display: block; }
+
+.score-section {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.circle {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 5px solid #ff6b00;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+}
+.circle-label { text-align: center; font-size: 14px; }
+.rank {
+  background: #fff5e6;
+  padding: 12px;
+  text-align: center;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+.wrong-item {
+  background: #fff3f3;
+  border-left: 5px solid red;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<header>🔥 fire engineering science mcq test 8</header>
+<div id="floatingTimer">⏱️ 00:00:00</div>
+
+<div class="exam-container" id="exam">
+<form id="examForm">
+<div id="questions"></div>
+<button type="submit">Submit Exam</button>
+</form>
+</div>
+
+<div class="result-container" id="resultPage">
+<div class="header">🔥 Exam Result</div>
+
+<div class="tabs">
+  <div class="tab active" onclick="openTab(event,'result')">Test Result</div>
+  <div class="tab" onclick="openTab(event,'wrong')">Wrong Questions ❓</div>
+  <div class="tab" onclick="openTab(event,'rank')">Rank List</div>
+</div>
+
+<div id="result" class="content active">
+  <div class="score-section">
+    <div>
+      <div class="circle" id="scorePercent">0%</div>
+      <div class="circle-label">Score Ratio</div>
+    </div>
+    <div>
+      <div class="circle" id="scoreValue">0/0</div>
+      <div class="circle-label">Score</div>
+    </div>
+    <div>
+      <div class="circle" id="timeTaken">0s</div>
+      <div class="circle-label">Total Time</div>
+    </div>
+  </div>
+  <div class="rank" id="rankMsg"></div>
+</div>
+
+<div id="wrong" class="content"></div>
+
+<div id="rank" class="content">
+  <p>1. You — <span id="rankScore"></span>%</p>
+  <p>2. Student B — 92%</p>
+  <p>3. Student C — 85%</p>
+</div>
+</div>
+
+<script>
+// ================= QUESTIONS (SET 8) =================
+const questionsData = [
+{q:"Flame stretch mainly affects:",a:["Flame colour","Flame stability","Smoke density","Ignition temperature"],correct:1},
+
+{q:"Lewis number in combustion relates to:",a:["Heat transfer only","Mass diffusion only","Ratio of thermal to mass diffusivity","Radiation heat transfer"],correct:2},
+
+{q:"A flame is said to be quenched when:",a:["Temperature increases","Heat losses exceed heat generation","Oxygen increases","Pressure increases"],correct:1},
+
+{q:"Minimum ignition energy is LOWEST for:",a:["Dust cloud","Liquid pool","Gas–air mixture","Solid fuel"],correct:2},
+
+{q:"Which parameter MOST influences laminar flame speed?",a:["Fuel chemical structure","Flame colour","Container shape","Sound speed"],correct:0},
+
+{q:"Explosion severity index “Kst” is used for:",a:["Gas explosions","Vapour cloud explosions","Dust explosions","BLEVE"],correct:2},
+
+{q:"Higher Kst value indicates:",a:["Lower explosion risk","Slower pressure rise","Higher explosion violence","Lower flame speed"],correct:2},
+
+{q:"Confined vapour cloud explosions are more severe due to:",a:["Lower oxygen","Flame cooling","Pressure build-up","Lower fuel quantity"],correct:2},
+
+{q:"Pre-ignition in engines is dangerous because it:",a:["Reduces efficiency","Causes knock and damage","Lowers temperature","Reduces pressure"],correct:1},
+
+{q:"Auto-ignition temperature is the temperature at which:",a:["Fuel burns with flame","Fuel ignites without external spark","Fuel melts","Fuel vaporizes"],correct:1},
+
+{q:"Smouldering combustion differs from flaming because it:",a:["Has flame front","Occurs at surface without flame","Needs high oxygen","Produces light"],correct:1},
+
+{q:"Smouldering is dangerous mainly because it:",a:["Is visible","Produces high pressure","Can transition to flaming","Produces no heat"],correct:2},
+
+{q:"Fire load factor is used to:",a:["Calculate smoke","Design fire resistance","Measure noise","Select extinguisher"],correct:1},
+
+{q:"Compartment ventilation factor depends on:",a:["Fuel type","Opening area and height","Fire load only","Wall colour"],correct:1},
+
+{q:"Ventilation-controlled fire is characterized by:",a:["Excess oxygen","Fuel limitation","Oxygen limitation","Low temperature"],correct:2},
+
+{q:"Under-ventilated fires typically produce:",a:["Clean flames","High CO concentration","Blue flames","Low smoke"],correct:1},
+
+{q:"Fire plume temperature decreases with:",a:["Increase in height","Increase in fuel","Increase in HRR","Increase in confinement"],correct:0},
+
+{q:"Ceiling jet is formed due to:",a:["Smoke cooling","Fire plume impingement on ceiling","Backdraft","Water spray"],correct:1},
+
+{q:"Ceiling jet temperature depends mainly on:",a:["Ceiling colour","Heat release rate","Firefighter position","Noise"],correct:1},
+
+{q:"Sprinkler activation time depends on:",a:["Water pressure only","Ceiling jet temperature & velocity","Smoke colour","Flame height only"],correct:1},
+
+{q:"Fire resistance rating is expressed in:",a:["°C","kW","Minutes / hours","kg"],correct:2},
+
+{q:"Passive fire protection includes:",a:["Sprinklers","Fire alarm","Fire-rated walls","Fire engines"],correct:2},
+
+{q:"Intumescent coatings work by:",a:["Cooling fire","Releasing gas","Expanding and insulating surface","Absorbing smoke"],correct:2},
+
+{q:"Structural steel loses 50% strength approximately at:",a:["100°C","300°C","550°C","900°C"],correct:2},
+
+{q:"Glass fails in fire mainly due to:",a:["Melting","Smoke attack","Thermal stress","Pressure wave"],correct:2},
+
+{q:"Fire modelling is used to:",a:["Fight fires","Predict fire behaviour","Manufacture extinguishers","Investigate crimes"],correct:1},
+
+{q:"Zone models assume:",a:["Uniform temperature everywhere","Two distinct layers (hot & cool)","Only one layer","No smoke"],correct:1},
+
+{q:"CFD fire models are based on:",a:["Empirical formulas","Visual observation","Conservation equations","Fire codes only"],correct:2},
+
+{q:"Smoke toxicity is mainly due to:",a:["CO₂ only","CO and HCN","Oxygen","Nitrogen"],correct:1},
+
+{q:"Tenability limits relate to:",a:["Fire cost","Structural damage","Human survivability","Flame colour"],correct:2},
+
+{q:"Visibility in smoke reduces mainly due to:",a:["Water vapour","Soot particles","Oxygen","Heat"],correct:1},
+
+{q:"Fire detection response time depends on:",a:["Detector spacing","Fire growth rate","Ceiling height","All of the above"],correct:3},
+
+{q:"Rate of fire growth is classified as:",a:["Slow, medium, fast, ultra-fast","Small, big, large","Low, high","Weak, strong"],correct:0},
+
+{q:"The “t-square fire” describes:",a:["Linear fire growth","Quadratic fire growth","Exponential growth","Random growth"],correct:1},
+
+{q:"In fire safety engineering, ALARP means:",a:["Always lower accident risk","As low as reasonably practicable","Allowable legal risk procedure","Advanced loss analysis"],correct:1}
+];
+// ================= RENDER =================
+const qDiv=document.getElementById("questions");
+questionsData.forEach((q,i)=>{
+  let html=`<div class="question"><h3>${i+1}. ${q.q}</h3>`;
+  q.a.forEach((opt,j)=>{
+    html+=`<label><input type="radio" name="q${i}" value="${j}"> ${opt}</label>`;
+  });
+  html+="</div>";
+  qDiv.innerHTML+=html;
+});
+
+// ================= TIMER =================
+let seconds=0;
+const timer=setInterval(()=>{
+  seconds++;
+  let h=String(Math.floor(seconds/3600)).padStart(2,"0");
+  let m=String(Math.floor((seconds%3600)/60)).padStart(2,"0");
+  let s=String(seconds%60).padStart(2,"0");
+  document.getElementById("floatingTimer").textContent=`⏱️ ${h}:${m}:${s}`;
+},1000);
+
+// ================= SUBMIT =================
+document.getElementById("examForm").addEventListener("submit",e=>{
+e.preventDefault();
+clearInterval(timer);
+
+let correct=0;
+let wrongHTML="";
+const total=questionsData.length;
+
+questionsData.forEach((q,i)=>{
+  const ans=document.querySelector(`input[name=q${i}]:checked`);
+  if(ans && Number(ans.value)===q.correct) correct++;
+  else{
+    wrongHTML+=`
+    <div class="wrong-item">
+    <b>Q${i+1}:</b> ${q.q}<br>
+    ❌ ${ans?q.a[ans.value]:"Not Answered"}<br>
+    ✅ ${q.a[q.correct]}
+    </div>`;
+  }
+});
+
+const percent=Math.round((correct/total)*100);
+
+document.getElementById("scorePercent").textContent=percent+"%";
+document.getElementById("scoreValue").textContent=`${correct}/${total}`;
+document.getElementById("timeTaken").textContent=
+`${Math.floor(seconds/60)}m ${seconds%60}s`;
+document.getElementById("rankScore").textContent=percent;
+document.getElementById("rankMsg").textContent=
+percent===100?"Excellent! Rank #1 🔥":`You scored ${percent}%. Keep improving!`;
+
+document.getElementById("wrong").innerHTML=wrongHTML;
+document.getElementById("exam").style.display="none";
+document.getElementById("floatingTimer").style.display="none";
+document.getElementById("resultPage").style.display="block";
+});
+
+function openTab(e,id){
+document.querySelectorAll(".content").forEach(c=>c.classList.remove("active"));
+document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));
+document.getElementById(id).classList.add("active");
+e.target.classList.add("active");
+}
+</script>
+
+</body>
+</html>
